@@ -7,4 +7,4 @@
 [node name="TestLevel" type="Node2D" parent="."]
 
 [node name="TileMap" parent="TestLevel" instance=ExtResource("1_3fcqx")]
-layer_1/tile_data = PackedInt32Array(-65520, 327680, 0, -65519, 393216, 0, -65518, 458752, 0)
+layer_1/tile_data = PackedInt32Array(-65520, 327680, 0, -65519, 393216, 0, -65518, 458752, 0, 65532, 65536, 0, 65533, 131072, 0, 65534, 131072, 0, 65535, 131072, 0, 0, 131072, 0, 1, 131072, 0, 2, 131072, 0, 3, 131072, 0, 4, 131072, 0, 5, 196608, 0)
