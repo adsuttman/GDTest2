@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c71rx8aoybweb"]
 
 [ext_resource type="PackedScene" uid="uid://ta8l2trtluv3" path="res://tile_map.tscn" id="1_3fcqx"]
-[ext_resource type="PackedScene" uid="uid://csgt4cba7ropy" path="res://player_character.tscn" id="2_40r3b"]
+[ext_resource type="PackedScene" uid="uid://7m2135fgxlxm" path="res://Resources/Player/player_character.tscn" id="2_nfiht"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(506, 331)
@@ -9,7 +9,9 @@ position = Vector2(506, 331)
 [node name="TestLevel" type="Node2D" parent="."]
 
 [node name="TileMap" parent="TestLevel" instance=ExtResource("1_3fcqx")]
-layer_1/tile_data = PackedInt32Array(65532, 65536, 0, 65533, 131072, 0, 65534, 131072, 0, 65535, 131072, 0, 0, 131072, 0, 1, 131072, 0, 2, 131072, 0, 3, 131072, 0, 4, 131072, 0, 5, 196608, 0)
+layer_0/name = "foreground"
+layer_0/tile_data = PackedInt32Array(65532, 65536, 0, 65533, 131072, 0, 65534, 131072, 0, 65535, 131072, 0, 0, 196608, 0, -196608, 131072, 0, -131073, 131072, 0, -131074, 131072, 0, -131075, 131072, 0, -131076, 65536, 0, 262137, 65536, 0, 262138, 131072, 0, 262139, 131072, 0, 196608, 65536, 0, 196609, 131072, 0, 196610, 131072, 0, 196611, 131072, 0, 196612, 131072, 0, 196613, 131072, 0, 196614, 131072, 0, 196615, 196608, 0, 262140, 196608, 0, 4, 65536, 0, 5, 131072, 0, 6, 196608, 0, -196605, 196608, 0, -196606, 131072, 0, -196607, 131072, 0, 131064, 262144, 0)
+layer_1/name = "background"
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("2_40r3b")]
-position = Vector2(1, -27)
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_nfiht")]
+position = Vector2(26, -26)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhpx6iflykyxl"
-path="res://.godot/imported/playerBlue_fall.png-64fc106575d0ad1ce037277b7d2cdc24.ctex"
+uid="uid://djchyfebc0wq4"
+path="res://.godot/imported/playerBlue_duck.png-a33fed7f06dc7db25281f99a47a3fc1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Player/playerBlue_fall.png"
-dest_files=["res://.godot/imported/playerBlue_fall.png-64fc106575d0ad1ce037277b7d2cdc24.ctex"]
+source_file="res://Resources/Player/Sprites/playerBlue_duck.png"
+dest_files=["res://.godot/imported/playerBlue_duck.png-a33fed7f06dc7db25281f99a47a3fc1d.ctex"]
 
 [params]
 

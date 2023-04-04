@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m0ain3kn2su0"
-path="res://.godot/imported/playerBlue_swim1.png-a5c3e23612f9f3ecd8cd82f3716a81df.ctex"
+uid="uid://b0o0e3bl73rqr"
+path="res://.godot/imported/playerBlue_dead.png-a87736342deabd71dbecb125acdd3a0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Player/playerBlue_swim1.png"
-dest_files=["res://.godot/imported/playerBlue_swim1.png-a5c3e23612f9f3ecd8cd82f3716a81df.ctex"]
+source_file="res://Resources/Player/Sprites/playerBlue_dead.png"
+dest_files=["res://.godot/imported/playerBlue_dead.png-a87736342deabd71dbecb125acdd3a0c.ctex"]
 
 [params]
 

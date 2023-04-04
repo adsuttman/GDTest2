@@ -1,0 +1,110 @@
+[gd_scene load_steps=16 format=3 uid="uid://7m2135fgxlxm"]
+
+[ext_resource type="Script" path="res://Resources/Player/player_character.gd" id="1_dimdi"]
+[ext_resource type="Texture2D" uid="uid://cns82dfp6mcpm" path="res://Resources/Player/Sprites/playerBlue_up3.png" id="2_b5bwj"]
+[ext_resource type="Texture2D" uid="uid://xbrx670wtm5b" path="res://Resources/Player/Sprites/playerBlue_stand.png" id="2_s8sje"]
+[ext_resource type="Texture2D" uid="uid://m0ain3kn2su0" path="res://Resources/Player/Sprites/playerBlue_swim1.png" id="4_8i4w5"]
+[ext_resource type="Texture2D" uid="uid://yt1abprkdds8" path="res://Resources/Player/Sprites/playerBlue_swim2.png" id="5_nm3bn"]
+[ext_resource type="Texture2D" uid="uid://crf6p66lehv84" path="res://Resources/Player/Sprites/playerBlue_walk1.png" id="5_owq7o"]
+[ext_resource type="Texture2D" uid="uid://cvwuvhtdv33ot" path="res://Resources/Player/Sprites/playerBlue_walk2.png" id="6_kxwm3"]
+[ext_resource type="Texture2D" uid="uid://b5hw02wuc2jmm" path="res://Resources/Player/Sprites/playerBlue_walk3.png" id="7_1c1kd"]
+[ext_resource type="Script" path="res://Resources/Player/player_state_manager.gd" id="7_1lk68"]
+[ext_resource type="Script" path="res://Resources/Player/States/idle.gd" id="8_sjseq"]
+[ext_resource type="Script" path="res://Resources/Player/States/walk.gd" id="9_a4h2m"]
+[ext_resource type="Script" path="res://Resources/Player/fall.gd" id="11_b8dos"]
+[ext_resource type="Script" path="res://Resources/Player/jump.gd" id="12_00s13"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8q33r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b5bwj")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s8sje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s8sje")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8i4w5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nm3bn")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.1,
+"texture": ExtResource("5_owq7o")
+}, {
+"duration": 0.8,
+"texture": ExtResource("6_kxwm3")
+}, {
+"duration": 1.1,
+"texture": ExtResource("7_1c1kd")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 9.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_am3o8"]
+radius = 17.0
+height = 54.0
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+script = ExtResource("1_dimdi")
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8q33r")
+animation = &"jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_am3o8")
+
+[node name="StateManager" type="Node" parent="."]
+script = ExtResource("7_1lk68")
+starting_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateManager"]
+script = ExtResource("8_sjseq")
+jump_node = NodePath("../Jump")
+fall_node = NodePath("../Fall")
+walk_node = NodePath("../Walk")
+animation_name = "idle"
+
+[node name="Walk" type="Node" parent="StateManager"]
+script = ExtResource("9_a4h2m")
+jump_node = NodePath("../Jump")
+fall_node = NodePath("../Fall")
+idle_node = NodePath("../Idle")
+animation_name = "walk"
+
+[node name="Fall" type="Node" parent="StateManager"]
+script = ExtResource("11_b8dos")
+walk_speed = 300.0
+idle_node = NodePath("../Idle")
+walk_node = NodePath("../Walk")
+animation_name = "fall"
+
+[node name="Jump" type="Node" parent="StateManager"]
+script = ExtResource("12_00s13")
+jump_force = 400.0
+walk_speed = 300.0
+idle_node = NodePath("../Idle")
+walk_node = NodePath("../Walk")
+fall_node = NodePath("../Fall")
+animation_name = "jump"

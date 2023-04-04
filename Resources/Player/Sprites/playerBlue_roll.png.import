@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cliaqpiu0a4h1"
-path="res://.godot/imported/playerBlue_switch2.png-dd68813c8d9afeef083d46aa6dc1771f.ctex"
+uid="uid://pjvc5sfmevb3"
+path="res://.godot/imported/playerBlue_roll.png-20de94daa2f5056fb4f51e144c0e5ade.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Player/playerBlue_switch2.png"
-dest_files=["res://.godot/imported/playerBlue_switch2.png-dd68813c8d9afeef083d46aa6dc1771f.ctex"]
+source_file="res://Resources/Player/Sprites/playerBlue_roll.png"
+dest_files=["res://.godot/imported/playerBlue_roll.png-20de94daa2f5056fb4f51e144c0e5ade.ctex"]
 
 [params]
 

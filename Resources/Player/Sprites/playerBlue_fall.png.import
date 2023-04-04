@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5hw02wuc2jmm"
-path="res://.godot/imported/playerBlue_walk3.png-8f284e3bc494cec32757c74df2e6ef49.ctex"
+uid="uid://bhpx6iflykyxl"
+path="res://.godot/imported/playerBlue_fall.png-3fde5f0084ebee3945d11a4dc779e173.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Player/playerBlue_walk3.png"
-dest_files=["res://.godot/imported/playerBlue_walk3.png-8f284e3bc494cec32757c74df2e6ef49.ctex"]
+source_file="res://Resources/Player/Sprites/playerBlue_fall.png"
+dest_files=["res://.godot/imported/playerBlue_fall.png-3fde5f0084ebee3945d11a4dc779e173.ctex"]
 
 [params]
 
