@@ -1,14 +1,16 @@
 extends PlayerState
 
-@export var walk_speed: float = 200
+#@export var jump_node: NodePath
+#@export var fall_node: NodePath
+#@export var idle_node: NodePath
+#
+#@onready var jump_state: PlayerState = get_node(jump_node)
+#@onready var fall_state: PlayerState = get_node(fall_node)
+#@onready var idle_state: PlayerState = get_node(idle_node)
 
-@export var jump_node: NodePath
-@export var fall_node: NodePath
-@export var idle_node: NodePath
-
-@onready var jump_state: PlayerState = get_node(jump_node)
-@onready var fall_state: PlayerState = get_node(fall_node)
-@onready var idle_state: PlayerState = get_node(idle_node)
+@onready var idle_state: PlayerState = $"../Idle"
+@onready var fall_state: PlayerState = $"../Fall"
+@onready var jump_state: PlayerState = $"../Jump"
 
 func enter() -> void:
 	player.change_animation(animation_name)
@@ -29,7 +31,7 @@ func physics_process(delta: float) -> BaseState:
 		player.animations.flip_h = false
 	
 	player.velocity.y += player.gravity
-	player.velocity.x = move * walk_speed
+	player.velocity.x = move * player.walk_speed
 	player.move_and_slide()
 	
 	if move == 0:

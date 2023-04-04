@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://7m2135fgxlxm"]
+[gd_scene load_steps=16 format=3 uid="uid://c7et4cxajdk4t"]
 
 [ext_resource type="Script" path="res://Resources/Player/player_character.gd" id="1_dimdi"]
 [ext_resource type="Texture2D" uid="uid://cns82dfp6mcpm" path="res://Resources/Player/Sprites/playerBlue_up3.png" id="2_b5bwj"]
@@ -11,8 +11,8 @@
 [ext_resource type="Script" path="res://Resources/Player/player_state_manager.gd" id="7_1lk68"]
 [ext_resource type="Script" path="res://Resources/Player/States/idle.gd" id="8_sjseq"]
 [ext_resource type="Script" path="res://Resources/Player/States/walk.gd" id="9_a4h2m"]
-[ext_resource type="Script" path="res://Resources/Player/fall.gd" id="11_b8dos"]
-[ext_resource type="Script" path="res://Resources/Player/jump.gd" id="12_00s13"]
+[ext_resource type="Script" path="res://Resources/Player/States/fall.gd" id="12_3hw18"]
+[ext_resource type="Script" path="res://Resources/Player/States/jump.gd" id="13_tdvlg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8q33r"]
 animations = [{
@@ -67,6 +67,10 @@ height = 54.0
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_dimdi")
+gravity = 8
+walk_speed = 400.0
+jump_force = 400.0
+air_speed = 300.0
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8q33r")
@@ -81,32 +85,18 @@ starting_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateManager"]
 script = ExtResource("8_sjseq")
-jump_node = NodePath("../Jump")
-fall_node = NodePath("../Fall")
-walk_node = NodePath("../Walk")
 animation_name = "idle"
 
 [node name="Walk" type="Node" parent="StateManager"]
 script = ExtResource("9_a4h2m")
-jump_node = NodePath("../Jump")
-fall_node = NodePath("../Fall")
-idle_node = NodePath("../Idle")
 animation_name = "walk"
 
 [node name="Fall" type="Node" parent="StateManager"]
-script = ExtResource("11_b8dos")
-walk_speed = 300.0
-idle_node = NodePath("../Idle")
-walk_node = NodePath("../Walk")
+script = ExtResource("12_3hw18")
 animation_name = "fall"
 
 [node name="Jump" type="Node" parent="StateManager"]
-script = ExtResource("12_00s13")
-jump_force = 400.0
-walk_speed = 300.0
-idle_node = NodePath("../Idle")
-walk_node = NodePath("../Walk")
-fall_node = NodePath("../Fall")
+script = ExtResource("13_tdvlg")
 animation_name = "jump"
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -1,12 +1,16 @@
 extends PlayerState
 
-@export var jump_node: NodePath
-@export var fall_node: NodePath
-@export var walk_node: NodePath
+#@export var jump_node: NodePath
+#@export var fall_node: NodePath
+#@export var walk_node: NodePath
+#
+#@onready var jump_state: PlayerState = get_node(jump_node)
+#@onready var fall_state: PlayerState = get_node(fall_node)
+#@onready var walk_state: PlayerState = get_node(walk_node)
 
-@onready var jump_state: PlayerState = get_node(jump_node)
-@onready var fall_state: PlayerState = get_node(fall_node)
-@onready var walk_state: PlayerState = get_node(walk_node)
+@onready var jump_state: PlayerState = $"../Jump"
+@onready var fall_state: PlayerState = $"../Fall"
+@onready var walk_state: PlayerState = $"../Walk"
 
 func enter() -> void:
 	player.change_animation(animation_name)
