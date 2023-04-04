@@ -108,3 +108,11 @@ idle_node = NodePath("../Idle")
 walk_node = NodePath("../Walk")
 fall_node = NodePath("../Fall")
 animation_name = "jump"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
