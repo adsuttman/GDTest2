@@ -67,7 +67,6 @@ height = 54.0
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_dimdi")
-gravity = 8
 walk_speed = 400.0
 jump_force = 400.0
 air_speed = 300.0
