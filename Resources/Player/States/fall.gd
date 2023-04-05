@@ -29,7 +29,7 @@ func physics_process(delta: float) -> BaseState:
 		player.animations.flip_h = false
 	
 	player.velocity.x = move * player.air_speed
-	player.velocity.y += player.fall_speed
+	player.velocity.y += player.gravity * player.fall_gravity_multiplier
 	player.move_and_slide()
 	
 	if player.coyote_timer > 0:
