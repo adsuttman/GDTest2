@@ -6,9 +6,12 @@ class_name Player
 @export var jump_force: float = 300
 @export var air_speed: float = 100
 @export var fall_speed: float = 18
+@export var coyote_time: int = 5
 
 @onready var animations: AnimatedSprite2D = $Animations
 @onready var states = $StateManager
+
+var coyote_timer = 0
 
 func _ready() -> void:
 	states.init(self)

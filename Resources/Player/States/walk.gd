@@ -22,6 +22,7 @@ func input(event: InputEvent) -> BaseState:
 
 func physics_process(delta: float) -> BaseState:
 	if !player.is_on_floor():
+		player.coyote_timer = player.coyote_time
 		return fall_state
 
 	var move = get_movement_input()
