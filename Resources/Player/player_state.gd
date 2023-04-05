@@ -4,6 +4,9 @@ class_name PlayerState
 @export var animation_name: String
 var player: Player
 
+func enter() -> void:
+	player.change_animation(animation_name)
+
 func input(event:InputEvent) -> BaseState:
 	return null
 

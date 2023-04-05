@@ -12,8 +12,8 @@ extends PlayerState
 @onready var fall_state: PlayerState = $"../Fall"
 @onready var jump_state: PlayerState = $"../Jump"
 
-func enter() -> void:
-	player.change_animation(animation_name)
+#func enter() -> void:
+#	super()
 
 func input(event: InputEvent) -> BaseState:
 	if Input.is_action_just_pressed("jump"):

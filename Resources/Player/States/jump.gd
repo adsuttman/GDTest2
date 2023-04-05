@@ -13,7 +13,7 @@ extends PlayerState
 @onready var walk_state: PlayerState = $"../Walk"
 
 func enter() -> void:
-	player.change_animation(animation_name)
+	super()
 	player.velocity.y = -player.jump_force
 
 func physics_process(delta: float) -> BaseState:

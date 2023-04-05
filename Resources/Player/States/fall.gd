@@ -9,8 +9,8 @@ extends PlayerState
 @onready var idle_state: PlayerState = $"../Idle"
 @onready var walk_state: PlayerState = $"../Walk"
 
-func enter() -> void:
-	player.change_animation(animation_name)
+#func enter() -> void:
+#	player.change_animation(animation_name)
 
 func physics_process(delta: float) -> BaseState:
 	var move = 0
