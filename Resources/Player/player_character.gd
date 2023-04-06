@@ -10,6 +10,7 @@ class_name Player
 @export var jump_buffer: int = 5
 @export var acceleration: float = walk_speed * 15
 @export var fast_fall_multiplier: float = 1.5
+@export var terminal_velocity: float = 750
 
 @onready var animations: AnimatedSprite2D = $Animations
 @onready var states = $StateManager
