@@ -32,9 +32,12 @@ func physics_process(delta: float) -> BaseState:
 	elif Input.is_action_pressed("right"):
 		move = 1
 		player.animations.flip_h = false
-	
+	if Input.is_action_pressed("down"):
+		player.velocity.y += player.gravity * player.fall_gravity_multiplier\
+		* player.fast_fall_multiplier
+	else:
+		player.velocity.y += player.gravity * player.fall_gravity_multiplier
 	player.velocity.x = move * player.air_speed
-	player.velocity.y += player.gravity * player.fall_gravity_multiplier
 	player.move_and_slide()
 	
 	if player.coyote_timer > 0:

@@ -2,13 +2,14 @@ extends CharacterBody2D
 class_name Player
 
 @export var gravity: int = 6
-@export var walk_speed: float = 200
-@export var jump_force: float = 300
-@export var air_speed: float = 100
+@export var walk_speed: float = 400
+@export var jump_force: float = 400
+@export var air_speed: float = 300
 @export var fall_gravity_multiplier: float = 3
 @export var coyote_time: int = 5
 @export var jump_buffer: int = 5
 @export var acceleration: float = walk_speed * 15
+@export var fast_fall_multiplier: float = 1.5
 
 @onready var animations: AnimatedSprite2D = $Animations
 @onready var states = $StateManager

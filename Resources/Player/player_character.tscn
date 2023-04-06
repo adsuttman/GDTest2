@@ -67,9 +67,8 @@ height = 54.0
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_dimdi")
-walk_speed = 400.0
-jump_force = 400.0
-air_speed = 300.0
+gravity = 8
+jump_force = 450.0
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8q33r")
