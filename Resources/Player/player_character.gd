@@ -8,6 +8,7 @@ class_name Player
 @export var fall_gravity_multiplier: float = 3
 @export var coyote_time: int = 5
 @export var jump_buffer: int = 5
+@export var acceleration: float = walk_speed * 15
 
 @onready var animations: AnimatedSprite2D = $Animations
 @onready var states = $StateManager

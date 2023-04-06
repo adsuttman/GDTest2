@@ -32,7 +32,8 @@ func physics_process(delta: float) -> BaseState:
 		player.animations.flip_h = false
 	
 	player.velocity.y += player.gravity
-	player.velocity.x = move * player.walk_speed
+	player.velocity.x = clamp(player.velocity.x + move * player.acceleration * delta,
+		-player.walk_speed, player.walk_speed)
 	player.move_and_slide()
 	
 	if move == 0:
