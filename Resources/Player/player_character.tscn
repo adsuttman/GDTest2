@@ -66,6 +66,7 @@ radius = 17.0
 height = 54.0
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
+floor_snap_length = 7.0
 script = ExtResource("1_dimdi")
 gravity = 8
 jump_force = 450.0

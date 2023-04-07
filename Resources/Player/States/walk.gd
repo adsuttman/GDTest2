@@ -35,7 +35,6 @@ func physics_process(delta: float) -> BaseState:
 	player.velocity.x = clamp(player.velocity.x + move * player.acceleration * delta,
 		-player.walk_speed, player.walk_speed)
 	player.move_and_slide()
-	
 	if move == 0:
 		return idle_state
 
