@@ -9,6 +9,7 @@ extends PlayerState
 @onready var idle_state: PlayerState = $"../Idle"
 @onready var walk_state: PlayerState = $"../Walk"
 @onready var jump_state: PlayerState = $"../Jump"
+@onready var wall_slide_state: PlayerState = $"../WallSlide"
 
 var jump_timer: int = 0
 
@@ -49,7 +50,9 @@ func physics_process(delta: float) -> BaseState:
 	if jump_timer > 0:
 		jump_timer -= 1
 #		print(jump_timer)
-	
+	if player.is_on_wall_only():
+		if player.get_wall_normal().x == -move:
+			return wall_slide_state
 	if player.is_on_floor():
 		if jump_timer > 0:
 			jump_timer = 0
@@ -60,3 +63,7 @@ func physics_process(delta: float) -> BaseState:
 		else:
 			return idle_state
 	return null
+
+func exit() -> void:
+	jump_timer = 0
+	player.coyote_timer = 0

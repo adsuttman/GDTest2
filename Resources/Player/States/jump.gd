@@ -11,6 +11,7 @@ extends PlayerState
 @onready var idle_state: PlayerState = $"../Idle"
 @onready var fall_state: PlayerState = $"../Fall"
 @onready var walk_state: PlayerState = $"../Walk"
+@onready var wall_slide_state: PlayerState = $"../WallSlide"
 
 func enter() -> void:
 	super()
@@ -24,14 +25,15 @@ func physics_process(delta: float) -> BaseState:
 	elif Input.is_action_pressed("right"):
 		move = 1
 		player.animations.flip_h = false
-	
 	player.velocity.x = move * player.air_speed
 	player.velocity.y += player.gravity
 	player.move_and_slide()
 	
 	if player.velocity.y > 0 or Input.is_action_just_released("jump"):
 		return fall_state
-
+	if player.is_on_wall_only():
+		if player.get_wall_normal().x == -move:
+			return wall_slide_state
 	if player.is_on_floor():
 		if move != 0:
 			return walk_state
