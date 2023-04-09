@@ -42,7 +42,6 @@ func physics_process(delta: float) -> BaseState:
 #	print(player.velocity.y)
 	player.velocity.x = move * player.air_speed
 	player.move_and_slide()
-
 	
 	if player.coyote_timer > 0:
 		player.coyote_timer -= 1
@@ -54,6 +53,9 @@ func physics_process(delta: float) -> BaseState:
 		if player.get_wall_normal().x == -move:
 			return wall_slide_state
 	if player.is_on_floor():
+		var object = player.get_slide_collision(0).get_collider()
+		if(object.has_method("on_landing")):
+			object.on_landing(player)
 		if jump_timer > 0:
 			jump_timer = 0
 #			print("jump buffer activated")

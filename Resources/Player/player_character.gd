@@ -32,3 +32,6 @@ func _process(delta: float) -> void:
 
 func change_animation(animation :String) -> void:
 	animations.play(animation)
+
+func landed_on_spikes():
+	print("player landed on spikes")

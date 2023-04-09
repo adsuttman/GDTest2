@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d3rwouaaxyo2i"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://d3rwouaaxyo2i"]
 
 [ext_resource type="Texture2D" uid="uid://dxn142pvflwhv" path="res://tilesheet_complete.png" id="1_ov668"]
+[ext_resource type="PackedScene" uid="uid://cx8j3hvwlx14j" path="res://Resources/Objects/spikes.tscn" id="2_uvb1j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5ugi"]
 resource_name = "terrain"
@@ -939,6 +940,10 @@ texture_region_size = Vector2i(64, 64)
 21:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 21:11/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_y6yut"]
+resource_name = "spikes"
+scenes/1/scene = ExtResource("2_uvb1j")
+
 [resource]
 tile_size = Vector2i(64, 64)
 occlusion_layer_0/light_mask = 1
@@ -950,3 +955,4 @@ terrain_set_0/terrain_1/name = "Floating"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_q5ugi")
+sources/1 = SubResource("TileSetScenesCollectionSource_y6yut")
