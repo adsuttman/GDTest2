@@ -33,5 +33,8 @@ func _process(delta: float) -> void:
 func change_animation(animation :String) -> void:
 	animations.play(animation)
 
-func landed_on_spikes():
-	print("player landed on spikes")
+func handle_collision(object: Object):
+	if object.has_meta("name"):
+		var name = object.get_meta("name")
+		if name == "spikes":
+			states.change_state($StateManager/Jump)

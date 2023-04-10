@@ -54,8 +54,8 @@ func physics_process(delta: float) -> BaseState:
 			return wall_slide_state
 	if player.is_on_floor():
 		var object = player.get_slide_collision(0).get_collider()
-		if(object.has_method("on_landing")):
-			object.on_landing(player)
+		if(object.get_meta("is_collidable")):
+			player.handle_collision(object)
 		if jump_timer > 0:
 			jump_timer = 0
 #			print("jump buffer activated")
