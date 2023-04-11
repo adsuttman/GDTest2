@@ -12,6 +12,7 @@ class_name Player
 @export var fast_fall_multiplier: float = 1.5
 @export var terminal_velocity: float = 750
 @export var wall_slide_fall_multiplier = 1
+var alive = true
 
 @onready var animations: AnimatedSprite2D = $Animations
 @onready var states = $StateManager
@@ -22,19 +23,27 @@ func _ready() -> void:
 	states.init(self)
 
 func _unhandled_input(event: InputEvent) -> void:
-	states.input(event)
+	if alive:
+		states.input(event)
 
 func _physics_process(delta: float) -> void:
-	states.physics_process(delta)
+	if alive:
+		states.physics_process(delta)
 
 func _process(delta: float) -> void:
 	states.process(delta)
 
 func change_animation(animation :String) -> void:
 	animations.play(animation)
+	
+func die() -> void:
+	alive = false
 
 func handle_collision(object: Object):
 	if object.has_meta("name"):
 		var name = object.get_meta("name")
 		if name == "spikes":
-			states.change_state($StateManager/Jump)
+			die()
+			hide()
+			await get_tree().create_timer(1).timeout
+			LevelLoader.reload()
