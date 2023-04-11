@@ -108,7 +108,7 @@ animation_name = "walk"
 script = ExtResource("12_3hw18")
 animation_name = "fall"
 
-[node name="Jump" type="Node" parent="StateManager"]
+[node name="Jump" type="Node" parent="StateManager" groups=["player"]]
 script = ExtResource("13_tdvlg")
 animation_name = "jump"
 
