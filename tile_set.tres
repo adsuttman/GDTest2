@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://d3rwouaaxyo2i"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://d3rwouaaxyo2i"]
 
 [ext_resource type="Texture2D" uid="uid://dxn142pvflwhv" path="res://tilesheet_complete.png" id="1_ov668"]
 [ext_resource type="PackedScene" uid="uid://cx8j3hvwlx14j" path="res://Resources/Objects/spikes.tscn" id="2_uvb1j"]
+[ext_resource type="PackedScene" uid="uid://sg8b1nd2iji3" path="res://Resources/Objects/gem.tscn" id="3_1ktxu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5ugi"]
 resource_name = "terrain"
@@ -941,8 +942,12 @@ texture_region_size = Vector2i(64, 64)
 21:11/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_y6yut"]
-resource_name = "spikes"
+resource_name = "obstacles"
 scenes/1/scene = ExtResource("2_uvb1j")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_paye4"]
+resource_name = "collectibles"
+scenes/1/scene = ExtResource("3_1ktxu")
 
 [resource]
 tile_size = Vector2i(64, 64)
@@ -956,3 +961,4 @@ terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_q5ugi")
 sources/1 = SubResource("TileSetScenesCollectionSource_y6yut")
+sources/2 = SubResource("TileSetScenesCollectionSource_paye4")

@@ -13,6 +13,7 @@ class_name Player
 @export var terminal_velocity: float = 750
 @export var wall_slide_fall_multiplier = 1
 var alive = true
+var score = 0
 
 @onready var animations: AnimatedSprite2D = $Animations
 @onready var states = $StateManager
@@ -47,3 +48,6 @@ func handle_collision(object: Object):
 			hide()
 			await get_tree().create_timer(1).timeout
 			LevelLoader.reload()
+
+func collect_gem() -> void:
+	print("gem collected")
