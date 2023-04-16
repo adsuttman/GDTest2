@@ -13,7 +13,6 @@ class_name Player
 @export var terminal_velocity: float = 750
 @export var wall_slide_fall_multiplier = 1
 var alive = true
-var score = 0
 
 @onready var animations: AnimatedSprite2D = $Animations
 @onready var states = $StateManager
