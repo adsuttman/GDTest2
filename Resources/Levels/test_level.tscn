@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://00hm304mo0bl"]
+[gd_scene load_steps=6 format=3 uid="uid://00hm304mo0bl"]
 
 [ext_resource type="PackedScene" uid="uid://cdfb2n5qnpmnj" path="res://Resources/Background/parallax_background.tscn" id="1_biprj"]
 [ext_resource type="PackedScene" uid="uid://ta8l2trtluv3" path="res://tile_map.tscn" id="2_ojujp"]
 [ext_resource type="PackedScene" uid="uid://cx8j3hvwlx14j" path="res://Resources/Objects/spikes.tscn" id="3_arfmh"]
 [ext_resource type="PackedScene" uid="uid://c7et4cxajdk4t" path="res://Resources/Player/player_character.tscn" id="4_u72gy"]
+[ext_resource type="PackedScene" uid="uid://o78u1x6st5gl" path="res://Resources/Enemies/walker.tscn" id="5_xr7su"]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -23,3 +24,7 @@ position = Vector2(288, -15)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("4_u72gy")]
 position = Vector2(26, -26)
+
+[node name="Walker" parent="." instance=ExtResource("5_xr7su")]
+position = Vector2(-217, -22)
+starting_direction = -1

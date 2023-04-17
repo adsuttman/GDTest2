@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://o78u1x6st5gl"]
+
+[ext_resource type="Script" path="res://Resources/Enemies/walker.gd" id="1_6lf5x"]
+[ext_resource type="Texture2D" uid="uid://bhw5ywv22w6fs" path="res://Resources/Enemies/Sprites/enemyWalking_1.png" id="2_5qdud"]
+[ext_resource type="Texture2D" uid="uid://b3kmti1hycox1" path="res://Resources/Enemies/Sprites/enemyWalking_2.png" id="3_j7b0g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ejmq"]
+animations = [{
+"frames": [{
+"duration": 0.8,
+"texture": ExtResource("2_5qdud")
+}, {
+"duration": 1.2,
+"texture": ExtResource("3_j7b0g")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqadn"]
+radius = 16.0
+height = 44.0
+
+[node name="Walker" type="CharacterBody2D" groups=["enemy"]]
+floor_snap_length = 7.0
+script = ExtResource("1_6lf5x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6ejmq")
+animation = &"walking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dqadn")
