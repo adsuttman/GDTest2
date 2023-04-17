@@ -114,7 +114,7 @@ animation_name = "walk"
 script = ExtResource("12_3hw18")
 animation_name = "fall"
 
-[node name="Jump" type="Node" parent="StateManager" groups=["player"]]
+[node name="Jump" type="Node" parent="StateManager"]
 script = ExtResource("13_tdvlg")
 animation_name = "jump"
 
@@ -126,6 +126,5 @@ animation_name = "wall_slide"
 process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
-drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
