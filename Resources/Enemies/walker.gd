@@ -19,6 +19,7 @@ func _ready() -> void:
 	if !is_on_floor():
 		position.y += 1
 	if is_on_floor(): readying = false
+	flip_animation()
 
 func _physics_process(delta: float) -> void:
 	if !readying:
@@ -35,8 +36,17 @@ func switch_direction() -> void:
 	match current_direction:
 		direction.RIGHT:
 			current_direction = direction.LEFT
+			flip_animation()
 		direction.LEFT:
 			current_direction = direction.RIGHT
+			flip_animation()
 		_:
 			current_direction = starting_direction
+			flip_animation()
 
+func flip_animation() -> void:
+	match current_direction:
+		direction.RIGHT:
+			animations.flip_h = false
+		direction.LEFT:
+			animations.flip_h = true
