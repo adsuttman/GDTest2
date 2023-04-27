@@ -19,6 +19,8 @@ var alive = true
 
 var coyote_timer = 0
 
+signal player_death()
+
 func _ready() -> void:
 	states.init(self)
 
@@ -39,13 +41,12 @@ func change_animation(animation :String) -> void:
 func die() -> void:
 	alive = false
 	hide()
-	await get_tree().create_timer(1).timeout
-	LevelLoader.reload()
+	player_death.emit()
+	process_mode = Node.PROCESS_MODE_DISABLED
 
-func handle_collision(object: Object):
-	if object.has_meta("name"):
-		var name = object.get_meta("name")
-		if name == "spikes":
+func handle_stomp(behavior: String):
+	match (behavior):
+		"kill":
 			die()
 
 

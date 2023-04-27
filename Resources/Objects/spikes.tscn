@@ -7,8 +7,7 @@ size = Vector2(46, 30)
 
 [node name="Spikes" type="StaticBody2D"]
 position = Vector2(0, 17)
-metadata/is_collidable = true
-metadata/name = "spikes"
+metadata/stomp_behavior = "kill"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_acwoo")
