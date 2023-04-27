@@ -22,6 +22,7 @@ func _ready() -> void:
 	flip_animation()
 
 func _physics_process(delta: float) -> void:
+	super(delta)
 	if !readying:
 		if is_on_wall() or !is_on_floor():
 			switch_direction()

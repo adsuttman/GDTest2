@@ -38,15 +38,19 @@ func change_animation(animation :String) -> void:
 	
 func die() -> void:
 	alive = false
+	hide()
+	await get_tree().create_timer(1).timeout
+	LevelLoader.reload()
 
 func handle_collision(object: Object):
 	if object.has_meta("name"):
 		var name = object.get_meta("name")
 		if name == "spikes":
 			die()
-			hide()
-			await get_tree().create_timer(1).timeout
-			LevelLoader.reload()
+
+
+func on_enemy_collision():
+	die()
 
 func collect_gem() -> void:
 	print("gem collected")
