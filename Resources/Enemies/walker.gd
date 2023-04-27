@@ -23,14 +23,15 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
-	if !readying:
-		if is_on_wall() or !is_on_floor():
-			switch_direction()
-		velocity.x = current_direction * speed
-	else:
-		if is_on_floor(): readying = false
-	velocity.y = gravity
-	move_and_slide()
+	if alive:
+		if !readying:
+			if is_on_wall() or !is_on_floor():
+				switch_direction()
+			velocity.x = current_direction * speed
+		else:
+			if is_on_floor(): readying = false
+		velocity.y = gravity
+		move_and_slide()
 
 
 func switch_direction() -> void:

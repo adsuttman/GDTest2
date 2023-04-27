@@ -25,6 +25,7 @@ height = 44.0
 [node name="Walker" type="CharacterBody2D" groups=["enemy"]]
 floor_snap_length = 7.0
 script = ExtResource("1_6lf5x")
+metadata/stomp_behavior = "damage"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6ejmq")

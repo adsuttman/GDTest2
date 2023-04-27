@@ -44,10 +44,12 @@ func die() -> void:
 	player_death.emit()
 	process_mode = Node.PROCESS_MODE_DISABLED
 
-func handle_stomp(behavior: String):
+func handle_stomp(behavior: String, obj:Object):
 	match (behavior):
 		"kill":
 			die()
+		"damage":
+			obj.damage(1)
 
 
 func on_enemy_collision():
