@@ -1,6 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://clb2rrl8m07qd"]
+[gd_scene load_steps=15 format=3 uid="uid://clb2rrl8m07qd"]
 
 [ext_resource type="Texture2D" uid="uid://d1yve2wapxy3g" path="res://Resources/WorldMap/mapPack_tilesheet.png" id="1_3tnqj"]
+[ext_resource type="Script" path="res://Resources/WorldMap/node_map.gd" id="1_uaoc8"]
+[ext_resource type="Texture2D" uid="uid://crf6p66lehv84" path="res://Resources/Player/Sprites/playerBlue_walk1.png" id="2_2dheb"]
+[ext_resource type="Texture2D" uid="uid://cvwuvhtdv33ot" path="res://Resources/Player/Sprites/playerBlue_walk2.png" id="3_dq3w4"]
+[ext_resource type="Script" path="res://Resources/WorldMap/map_node.gd" id="5_x2wap"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lrewi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2dheb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dq3w4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ergpy"]
 resource_name = "WorldMapTiles"
@@ -421,15 +439,109 @@ terrain_set_1/terrain_1/name = "Levels 1"
 terrain_set_1/terrain_1/color = Color(0.227451, 0.662745, 0.211765, 1)
 sources/0 = SubResource("TileSetAtlasSource_ergpy")
 
-[node name="WorldMap" type="TileMap"]
+[sub_resource type="Curve2D" id="Curve2D_pk55k"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 256, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_qcm86"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -256, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_05w5r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -128)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_slav5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 128, 0, 0, 0, 0, 129, 128)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_ofdm3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.555908, 127.372)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_bs3n8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -127.693, 0.274841, 0, 0, 0, 0, -128.693, -126.725)
+}
+point_count = 3
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("start_node", "navigator")]
+script = ExtResource("1_uaoc8")
+start_node = NodePath("MapNode")
+navigation_speed = 250
+navigator = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+position = Vector2(96, 256)
+sprite_frames = SubResource("SpriteFrames_lrewi")
+
+[node name="WorldMap" type="TileMap" parent="."]
+z_index = -1
 tile_set = SubResource("TileSet_gptgx")
 format = 2
 layer_0/name = "Ground"
-layer_0/tile_data = PackedInt32Array(65540, 393216, 1, 4, 393216, 1, -65532, 393216, 1, 65539, 393216, 1, 3, 393216, 1, -65533, 393216, 1, 65538, 393216, 1, 2, 393216, 1, -65534, 393216, 1, 65537, 393216, 1, 1, 393216, 1, -65535, 393216, 1, 65536, 393216, 1, 0, 393216, 1, -65536, 393216, 1, 131071, 393216, 1, 65535, 393216, 1, -1, 393216, 1, 131077, 458752, 2, 65541, 524288, 0, 5, 393216, 1, 131076, 393216, 2, 131075, 393216, 2, 131074, 393216, 2, 131073, 393216, 2, 131072, 393216, 2, -65531, 524288, 1, -131067, 458752, 1, -131068, 393216, 1, -131069, 393216, 1, -131070, 393216, 1, -131071, 393216, 1, 65547, 589824, 0, 11, 393216, 1, -65525, 589824, 1, 65546, 393216, 2, 10, 393216, 1, -65526, 393216, 0, 65545, 393216, 2, 9, 393216, 1, -65527, 393216, 0, 65544, 393216, 2, 8, 393216, 1, -65528, 393216, 0, 65543, 393216, 2, 7, 393216, 1, -65529, 393216, 0, 65542, 393216, 2, 6, 393216, 1, -65530, 393216, 0, -196604, 393216, 1, -196605, 393216, 1, -196606, 393216, 1, -196607, 393216, 1, -131072, 393216, 1, -196608, 393216, 1, -131073, 393216, 1, -196603, 458752, 1, 196607, 393216, 2, 393233, 458752, 2, 327697, 458752, 1, 262161, 458752, 1, 196625, 458752, 1, 131089, 458752, 1, 65553, 458752, 1, 17, 458752, 1, -65519, 458752, 1, -131055, 458752, 0, 393232, 393216, 2, 327696, 393216, 1, 262160, 393216, 1, 196624, 393216, 1, 131088, 393216, 1, 65552, 393216, 1, 16, 393216, 1, -65520, 393216, 1, -131056, 393216, 0, 393231, 393216, 2, 327695, 393216, 1, 262159, 393216, 1, 196623, 393216, 1, 131087, 393216, 1, 65551, 393216, 1, 15, 393216, 1, -65521, 393216, 1, -131057, 393216, 0, 393230, 393216, 2, 327694, 393216, 1, 262158, 393216, 1, 196622, 393216, 1, 131086, 393216, 1, 65550, 393216, 1, 14, 393216, 1, -65522, 393216, 1, -131058, 393216, 0, 393229, 393216, 2, 327693, 393216, 1, 262157, 393216, 1, 196621, 393216, 1, 131085, 393216, 1, 65549, 393216, 1, 13, 393216, 1, -65523, 393216, 1, -131059, 393216, 0, 393228, 393216, 2, 327692, 393216, 1, 262156, 393216, 1, 196620, 393216, 1, 131084, 393216, 1, 65548, 393216, 1, 12, 393216, 1, -65524, 393216, 1, -131060, 393216, 0, 393227, 327680, 2, 327691, 327680, 1, 262155, 327680, 1, 196619, 327680, 1, 131083, 327680, 1, -131061, 327680, 0, -262139, 458752, 1, -327675, 458752, 0, -262140, 393216, 1, -327676, 393216, 0, -262141, 393216, 1, -327677, 393216, 0, -262142, 393216, 1, -327678, 393216, 0, -262143, 393216, 1, -327679, 393216, 0, -262144, 393216, 1, -327680, 393216, 0, -196609, 393216, 1, -262145, 393216, 0, 196606, 327680, 2, 131070, 327680, 1, 65534, 327680, 1, -2, 327680, 1, -65538, 327680, 1, -131074, 327680, 1, -196610, 327680, 1, -262146, 327680, 0, -65537, 393216, 1)
+layer_0/tile_data = PackedInt32Array(131073, 327680, 1, 196609, 327680, 1, 262145, 327680, 1, 327681, 327680, 1, 393217, 327680, 1, 458753, 327680, 1, 131074, 393216, 1, 196610, 393216, 1, 262146, 393216, 1, 327682, 393216, 1, 393218, 393216, 1, 458754, 393216, 1, 131075, 393216, 1, 196611, 393216, 1, 262147, 393216, 1, 327683, 393216, 1, 393219, 393216, 1, 458755, 393216, 1, 131076, 393216, 1, 196612, 393216, 1, 262148, 393216, 1, 327684, 393216, 1, 393220, 393216, 1, 458756, 393216, 1, 131077, 393216, 1, 196613, 393216, 1, 262149, 393216, 1, 327685, 393216, 1, 393221, 393216, 1, 458757, 393216, 1, 131078, 393216, 1, 196614, 393216, 1, 262150, 393216, 1, 327686, 393216, 1, 393222, 393216, 1, 458758, 393216, 1, 131079, 458752, 1, 196615, 458752, 1, 262151, 458752, 1, 327687, 524288, 1, 393223, 393216, 1, 458759, 524288, 0, 393224, 393216, 1, 393225, 393216, 1, 393226, 393216, 1, 393227, 393216, 1, 393228, 393216, 1, 262157, 327680, 0, 327693, 589824, 1, 393229, 393216, 1, 458765, 589824, 0, 524301, 327680, 1, 589837, 327680, 2, 262158, 393216, 0, 327694, 393216, 1, 393230, 393216, 1, 458766, 393216, 1, 524302, 393216, 1, 589838, 393216, 2, 262159, 393216, 0, 327695, 393216, 1, 393231, 393216, 1, 458767, 393216, 1, 524303, 393216, 1, 589839, 393216, 2, 262160, 393216, 0, 327696, 393216, 1, 393232, 393216, 1, 458768, 393216, 1, 524304, 393216, 1, 589840, 393216, 2, 262161, 393216, 0, 327697, 393216, 1, 393233, 393216, 1, 458769, 393216, 1, 524305, 393216, 1, 589841, 393216, 2, 262162, 458752, 0, 327698, 458752, 1, 393234, 458752, 1, 458770, 458752, 1, 524306, 458752, 1, 589842, 458752, 2, 327688, 393216, 0, 327689, 393216, 0, 327690, 393216, 0, 327691, 393216, 0, 327692, 393216, 0, 458760, 393216, 2, 458761, 393216, 2, 458762, 393216, 2, 458763, 393216, 2, 458764, 393216, 2, 524295, 458752, 2, 524294, 393216, 2, 524293, 393216, 2, 524292, 393216, 2, 524291, 393216, 2, 524290, 393216, 2, 524289, 327680, 2, 65537, 327680, 0, 65538, 393216, 0, 65539, 393216, 0, 65540, 393216, 0, 65541, 393216, 0, 65542, 393216, 0, 65543, 458752, 0)
 layer_1/name = "Paths"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array(4, 393216, 8, 5, 393216, 8, 6, 393216, 8, 7, 393216, 8, 8, 393216, 8, 9, 393216, 8, 10, 393216, 8, 11, 393216, 8, -65533, 327680, 8, 3, 131072, 9, -262141, 524288, 8, -196605, 327680, 8, 12, 393216, 8, 13, 393216, 8, 14, 589824, 8, -131071, 393216, 10, -131072, 589824, 9, -131070, 393216, 8, -131069, 393216, 9)
+layer_1/tile_data = PackedInt32Array(262145, 589824, 11, 262146, 393216, 8, 262147, 393216, 8, 262148, 393216, 8, 131077, 524288, 10, 196613, 327680, 8, 262149, 393216, 11, 327685, 327680, 8, 393221, 131072, 9, 393222, 393216, 8, 393223, 393216, 10, 393224, 393216, 8, 393225, 393216, 8, 393226, 393216, 8, 393227, 393216, 8, 393228, 393216, 8, 393229, 393216, 10, 393230, 393216, 8, 393231, 393216, 8, 393232, 589824, 10)
+
+[node name="MapNode" type="Node2D" parent="." node_paths=PackedStringArray("right", "right_path")]
+position = Vector2(96, 288)
+script = ExtResource("5_x2wap")
+right = NodePath("../MapNode2")
+right_path = NodePath("RightPath")
+
+[node name="RightPath" type="Path2D" parent="MapNode"]
+curve = SubResource("Curve2D_pk55k")
+
+[node name="MapNode2" type="Node2D" parent="." node_paths=PackedStringArray("up", "down", "left", "up_path", "down_path", "left_path")]
+position = Vector2(352, 288)
+script = ExtResource("5_x2wap")
+up = NodePath("../MapNode3")
+down = NodePath("../MapNode4")
+left = NodePath("../MapNode")
+up_path = NodePath("UpPath")
+down_path = NodePath("DownPath")
+left_path = NodePath("LeftPath")
+
+[node name="LeftPath" type="Path2D" parent="MapNode2"]
+curve = SubResource("Curve2D_qcm86")
+
+[node name="UpPath" type="Path2D" parent="MapNode2"]
+curve = SubResource("Curve2D_05w5r")
+
+[node name="DownPath" type="Path2D" parent="MapNode2"]
+curve = SubResource("Curve2D_slav5")
+
+[node name="MapNode3" type="Node2D" parent="." node_paths=PackedStringArray("down", "down_path")]
+position = Vector2(352.556, 160.628)
+script = ExtResource("5_x2wap")
+down = NodePath("../MapNode2")
+down_path = NodePath("DownPath")
+
+[node name="DownPath" type="Path2D" parent="MapNode3"]
+curve = SubResource("Curve2D_ofdm3")
+
+[node name="MapNode4" type="Node2D" parent="." node_paths=PackedStringArray("left", "left_path")]
+position = Vector2(480.693, 415.725)
+script = ExtResource("5_x2wap")
+left = NodePath("../MapNode2")
+left_path = NodePath("LeftPath")
+
+[node name="LeftPath" type="Path2D" parent="MapNode4"]
+curve = SubResource("Curve2D_bs3n8")

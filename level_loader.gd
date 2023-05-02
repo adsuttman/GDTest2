@@ -6,7 +6,8 @@ var current_level
 @onready var game: Node = get_node("/root/Game")
 
 func _ready() -> void:
-	MainMenu.start_pressed.connect(load_level)
+	if MainMenu:
+		MainMenu.start_pressed.connect(load_level)
 	
 func load_level() -> void:
 	current_level = TestLevel.instantiate()
